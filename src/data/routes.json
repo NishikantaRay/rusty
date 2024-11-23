@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/details",
+    "element": "CourseDetails",
+    "title": "Course Details",
+    "requiresAuth": false
+  },
+  {
+    "path": "/",
+    "element": "Home",
+    "title": "Home",
+    "requiresAuth": false
+  }
+]

@@ -12200,7 +12200,9 @@ input:focus::placeholder, textarea:focus::placeholder {
     transform: rotate(-90deg);
   }
 }
-
+.swiper-button-next, .swiper-button-prev {
+  display: none !important;
+}
 .h10_testimonial-area {
   position: relative;
   z-index: 1;
