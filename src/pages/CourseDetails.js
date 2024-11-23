@@ -1,41 +1,130 @@
 import Footer from "../components/footer/footer";
 import Navbar from "../components/nav/Navbar";
+import React, { useState, useEffect } from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+const localizer = momentLocalizer(moment);
 
+const eventsData = [
+  {
+    id: 1,
+    title: "Initial Consulting",
+    start: "2024-11-25T10:00:00",
+    end: "2024-11-25T11:00:00",
+  },
+  {
+    id: 2,
+    title: "Follow-Up Session",
+    start: "2024-11-26T14:00:00",
+    end: "2024-11-26T15:00:00",
+  },
+];
+
+const generateTimeSlots = (start, end) => {
+  const slots = [];
+  let current = moment(start, "HH:mm");
+  const endTime = moment(end, "HH:mm");
+
+  while (current.isBefore(endTime)) {
+    slots.push(current.format("HH:mm"));
+    current = current.add(30, "minutes");
+  }
+
+  return slots;
+};
+const popupStyles = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    padding: "20px",
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+    zIndex: 1000,
+  };
+  
+  const slotsContainerStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "10px",
+    marginTop: "10px",
+  };
+  
+  const slotBoxStyle = {
+    width: "80px",
+    height: "40px",
+    border: "1px solid #007BFF",
+    borderRadius: "5px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    userSelect: "none",
+  };
 const CourseDetails = () => {
+    const [events, setEvents] = useState([]);
+    const [popupVisible, setPopupVisible] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedSlot, setSelectedSlot] = useState(null);
+  
+    const timeSlots = generateTimeSlots("09:00", "17:00"); // 9:00 AM to 5:00 PM
+  
+    useEffect(() => {
+      const formattedEvents = eventsData.map((event) => ({
+        ...event,
+        start: new Date(event.start),
+        end: new Date(event.end),
+      }));
+      setEvents(formattedEvents);
+    }, []);
+  
+    const handleDateSelection = (slotInfo) => {
+      setSelectedDate(slotInfo.start);
+      setPopupVisible(true);
+    };
+  
+    const confirmBooking = () => {
+      if (!selectedSlot) {
+        alert("Please select a time slot.");
+        return;
+      }
+  
+      const startDateTime = new Date(
+        moment(selectedDate).format("YYYY-MM-DD") + "T" + selectedSlot
+      );
+      const endDateTime = moment(startDateTime).add(30, "minutes").toDate();
+  
+      const isOverlapping = events.some(
+        (event) => startDateTime < event.end && endDateTime > event.start
+      );
+  
+      if (isOverlapping) {
+        alert("This slot overlaps with an existing booking!");
+        return;
+      }
+  
+      const newEvent = {
+        id: events.length + 1,
+        title: "New Booking",
+        start: startDateTime,
+        end: endDateTime,
+      };
+  
+      setEvents([...events, newEvent]);
+      setPopupVisible(false);
+      setSelectedSlot(null);
+      console.log("Slot booked successfully!", newEvent);
+      alert("Slot booked successfully!");
+    };
   return (
     <>
       <Navbar />
-      <section
-        class="breadcrumb-area bg-default"
-        data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
-        <img
-          src="assets/img/breadcrumb/shape-1.png"
-          alt=""
-          class="breadcrumb-shape"
-        />
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="breadcrumb-content">
-                <h2 class="breadcrumb-title">
-                  Introduction to User Experience Design
-                </h2>
-                <div class="breadcrumb-list">
-                  <a href="index.html">Home</a>
-                  <span>Course Details</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
       <section class="course_details-area pt-120 pb-60">
         <div class="container">
-          {/* <div class="course_details-img">
-            <img src="assets/img/course/details/1.jpg" alt="" />
-          </div> */}
           <div class="row">
-            <div class="col-xl-8 col-lg-8">
+            <div class="col-xl-6 col-lg-6">
               <div class="course_details-wrap mb-55">
                 <div class="course_details-top mb-60">
                   <h3 class="course_details-title">
@@ -586,9 +675,96 @@ const CourseDetails = () => {
                 </div>
               </div>
             </div>
-            <div class="col-xl-4 col-lg-4">
+            <div class="col-xl-6 col-lg-6">
               <div class="course_details-sidebar mb-60">
-                <div class="course_details-price">
+                <div class="account-main">
+                  <h3 class="account-title">Sign in to Your Account 👋</h3>
+                  <form action="#" class="account-form">
+                    <div class="account-form-item mb-20">
+                      <div class="account-form-label">
+                        <label>First Name</label>
+                      </div>
+                      <div class="account-form-input">
+                        <input type="text" placeholder="First Name" />
+                      </div>
+                    </div>
+                    
+                    <div class="account-form-item mb-20">
+                      <div class="account-form-label">
+                        <label>Your Email</label>
+                      </div>
+                      <div class="account-form-input">
+                        <input type="email" placeholder="Enter Your Email" />
+                      </div>
+                    </div>
+                   
+                   
+                    <div>
+      <Calendar
+        localizer={localizer}
+        events={events}
+        selectable
+        onSelectSlot={handleDateSelection}
+        defaultView="month"
+        views={["month"]}
+        defaultDate={new Date()}
+        style={{ height: 400 }}
+      />
+      {popupVisible && (
+        <div style={popupStyles}>
+          <h3>Select Time Slot for {moment(selectedDate).format("MMMM Do YYYY")}</h3>
+          <div style={slotsContainerStyle}>
+            {timeSlots.map((slot) => (
+              <div
+                key={slot}
+                style={{
+                  ...slotBoxStyle,
+                  backgroundColor: selectedSlot === slot ? "#007BFF" : "#FFF",
+                  color: selectedSlot === slot ? "#FFF" : "#000",
+                }}
+                onClick={() => setSelectedSlot(slot)}
+              >
+                {moment(slot, "HH:mm").format("h:mm A")}
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: "10px" }}>
+            <button
+              style={{
+                marginRight: "10px",
+                padding: "10px",
+                background: "#007BFF",
+                color: "white",
+                border: "none",
+              }}
+              onClick={confirmBooking}
+            >
+              Confirm
+            </button>
+            <button
+              style={{
+                padding: "10px",
+                background: "#DC3545",
+                color: "white",
+                border: "none",
+              }}
+              onClick={() => setPopupVisible(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+                    <div class="account-form-button">
+                      <button type="submit" class="account-btn">
+                      Confirm Booking
+                      </button>
+                    </div>
+                  </form>
+                 
+                </div>
+                {/* <div class="course_details-price">
                   <del>$36.00</del>
                   <h2>$28.00</h2>
                 </div>
@@ -648,7 +824,7 @@ const CourseDetails = () => {
                       Purchase Now
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

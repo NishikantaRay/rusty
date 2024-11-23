@@ -5,10 +5,11 @@ import routes from "./data/routes.json";
 import PrivateRoute from "./components/PrivateRoute";
 import CourseDetails from "./pages/CourseDetails";
 import Home from "./pages/Home";
+
 const componentsMap = {
   CourseDetails: CourseDetails,
   Home: Home,
-  // Contact: Contact,
+
 };
 const App = () => {
   

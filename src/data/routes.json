@@ -10,5 +10,11 @@
     "element": "Home",
     "title": "Home",
     "requiresAuth": false
+  },
+  {
+    "path": "/proceed",
+    "element": "TopMate",
+    "title": "TopMate",
+    "requiresAuth": false
   }
 ]
