@@ -1,0 +1,18 @@
+{
+  "usefulLinks": [
+    { "label": "About Eduan", "url": "#" },
+    { "label": "Contact", "url": "#" },
+    { "label": "Help Centre", "url": "#" },
+    { "label": "Refund", "url": "#" },
+    { "label": "Conditions", "url": "#" },
+    { "label": "Privacy Policy", "url": "#" }
+  ],
+  "categories": [
+    { "label": "Design Skills", "url": "#" },
+    { "label": "Development", "url": "#" },
+    { "label": "Marketing", "url": "#" },
+    { "label": "Finance & Accounting", "url": "#" },
+    { "label": "IT & Software", "url": "#" },
+    { "label": "Sales Marketing", "url": "#" }
+  ]
+}

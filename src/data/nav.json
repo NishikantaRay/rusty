@@ -1,0 +1,18 @@
+{
+  "mainMenu": [
+    { "label": "Home", "url": "#" },
+    { "label": "About", "url": "#" },
+    { "label": "Career Training", "url": "#" },
+    { "label": "Workshops", "url": "#" },
+    { "label": "Blogs", "url": "#" },
+    { "label": "Contact", "url": "#" }
+  ],
+  "sidebarMenu": [
+    { "label": "Home", "url": "#" },
+    { "label": "About", "url": "#" },
+    { "label": "Career Training", "url": "#" },
+    { "label": "Workshops", "url": "#" },
+    { "label": "Blogs", "url": "#" },
+    { "label": "Contact", "url": "#" }
+  ]
+}

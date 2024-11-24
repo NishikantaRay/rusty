@@ -1,4 +1,4 @@
-import "./Header.css"; 
+import "./Header.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import routes from "./data/routes.json";
@@ -9,10 +9,8 @@ import Home from "./pages/Home";
 const componentsMap = {
   CourseDetails: CourseDetails,
   Home: Home,
-
 };
 const App = () => {
-  
   return (
     <>
       <Router>
@@ -38,7 +36,6 @@ const App = () => {
           })}
         </Routes>
       </Router>
-     
     </>
   );
 };

@@ -1,9 +1,10 @@
 import Footer from "../components/footer/footer";
-import Navbar from "../components/nav/Navbar";
+import Navbar from "../components/nav/navBar";
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import NewsLetter from "../components/newsletter/newsLetter";
 const localizer = momentLocalizer(moment);
 
 const eventsData = [
@@ -34,89 +35,89 @@ const generateTimeSlots = (start, end) => {
   return slots;
 };
 const popupStyles = {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "white",
-    padding: "20px",
-    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-    zIndex: 1000,
-  };
-  
-  const slotsContainerStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "10px",
-    marginTop: "10px",
-  };
-  
-  const slotBoxStyle = {
-    width: "80px",
-    height: "40px",
-    border: "1px solid #007BFF",
-    borderRadius: "5px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    userSelect: "none",
-  };
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  backgroundColor: "white",
+  padding: "20px",
+  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+  zIndex: 1000,
+};
+
+const slotsContainerStyle = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "10px",
+  marginTop: "10px",
+};
+
+const slotBoxStyle = {
+  width: "80px",
+  height: "40px",
+  border: "1px solid #007BFF",
+  borderRadius: "5px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  cursor: "pointer",
+  userSelect: "none",
+};
 const CourseDetails = () => {
-    const [events, setEvents] = useState([]);
-    const [popupVisible, setPopupVisible] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedSlot, setSelectedSlot] = useState(null);
-  
-    const timeSlots = generateTimeSlots("09:00", "17:00"); // 9:00 AM to 5:00 PM
-  
-    useEffect(() => {
-      const formattedEvents = eventsData.map((event) => ({
-        ...event,
-        start: new Date(event.start),
-        end: new Date(event.end),
-      }));
-      setEvents(formattedEvents);
-    }, []);
-  
-    const handleDateSelection = (slotInfo) => {
-      setSelectedDate(slotInfo.start);
-      setPopupVisible(true);
+  const [events, setEvents] = useState([]);
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+
+  const timeSlots = generateTimeSlots("09:00", "17:00"); // 9:00 AM to 5:00 PM
+
+  useEffect(() => {
+    const formattedEvents = eventsData.map((event) => ({
+      ...event,
+      start: new Date(event.start),
+      end: new Date(event.end),
+    }));
+    setEvents(formattedEvents);
+  }, []);
+
+  const handleDateSelection = (slotInfo) => {
+    setSelectedDate(slotInfo.start);
+    setPopupVisible(true);
+  };
+
+  const confirmBooking = () => {
+    if (!selectedSlot) {
+      alert("Please select a time slot.");
+      return;
+    }
+
+    const startDateTime = new Date(
+      moment(selectedDate).format("YYYY-MM-DD") + "T" + selectedSlot
+    );
+    const endDateTime = moment(startDateTime).add(30, "minutes").toDate();
+
+    const isOverlapping = events.some(
+      (event) => startDateTime < event.end && endDateTime > event.start
+    );
+
+    if (isOverlapping) {
+      alert("This slot overlaps with an existing booking!");
+      return;
+    }
+
+    const newEvent = {
+      id: events.length + 1,
+      title: "New Booking",
+      start: startDateTime,
+      end: endDateTime,
     };
-  
-    const confirmBooking = () => {
-      if (!selectedSlot) {
-        alert("Please select a time slot.");
-        return;
-      }
-  
-      const startDateTime = new Date(
-        moment(selectedDate).format("YYYY-MM-DD") + "T" + selectedSlot
-      );
-      const endDateTime = moment(startDateTime).add(30, "minutes").toDate();
-  
-      const isOverlapping = events.some(
-        (event) => startDateTime < event.end && endDateTime > event.start
-      );
-  
-      if (isOverlapping) {
-        alert("This slot overlaps with an existing booking!");
-        return;
-      }
-  
-      const newEvent = {
-        id: events.length + 1,
-        title: "New Booking",
-        start: startDateTime,
-        end: endDateTime,
-      };
-  
-      setEvents([...events, newEvent]);
-      setPopupVisible(false);
-      setSelectedSlot(null);
-      console.log("Slot booked successfully!", newEvent);
-      alert("Slot booked successfully!");
-    };
+
+    setEvents([...events, newEvent]);
+    setPopupVisible(false);
+    setSelectedSlot(null);
+    console.log("Slot booked successfully!", newEvent);
+    alert("Slot booked successfully!");
+  };
   return (
     <>
       <Navbar />
@@ -688,7 +689,7 @@ const CourseDetails = () => {
                         <input type="text" placeholder="First Name" />
                       </div>
                     </div>
-                    
+
                     <div class="account-form-item mb-20">
                       <div class="account-form-label">
                         <label>Your Email</label>
@@ -697,72 +698,72 @@ const CourseDetails = () => {
                         <input type="email" placeholder="Enter Your Email" />
                       </div>
                     </div>
-                   
-                   
+
                     <div>
-      <Calendar
-        localizer={localizer}
-        events={events}
-        selectable
-        onSelectSlot={handleDateSelection}
-        defaultView="month"
-        views={["month"]}
-        defaultDate={new Date()}
-        style={{ height: 400 }}
-      />
-      {popupVisible && (
-        <div style={popupStyles}>
-          <h3>Select Time Slot for {moment(selectedDate).format("MMMM Do YYYY")}</h3>
-          <div style={slotsContainerStyle}>
-            {timeSlots.map((slot) => (
-              <div
-                key={slot}
-                style={{
-                  ...slotBoxStyle,
-                  backgroundColor: selectedSlot === slot ? "#007BFF" : "#FFF",
-                  color: selectedSlot === slot ? "#FFF" : "#000",
-                }}
-                onClick={() => setSelectedSlot(slot)}
-              >
-                {moment(slot, "HH:mm").format("h:mm A")}
-              </div>
-            ))}
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <button
-              style={{
-                marginRight: "10px",
-                padding: "10px",
-                background: "#007BFF",
-                color: "white",
-                border: "none",
-              }}
-              onClick={confirmBooking}
-            >
-              Confirm
-            </button>
-            <button
-              style={{
-                padding: "10px",
-                background: "#DC3545",
-                color: "white",
-                border: "none",
-              }}
-              onClick={() => setPopupVisible(false)}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+                      <Calendar
+                        localizer={localizer}
+                        events={events}
+                        selectable
+                        onSelectSlot={handleDateSelection}
+                        defaultView="month"
+                        views={["month"]}
+                        defaultDate={new Date()}
+                        style={{ height: 400 }}
+                      />
+                      {popupVisible && (
+                        <div style={popupStyles}>
+                          <h3>
+                            Select Time Slot for{" "}
+                            {moment(selectedDate).format("MMMM Do YYYY")}
+                          </h3>
+                          <div style={slotsContainerStyle}>
+                            {timeSlots.map((slot) => (
+                              <div
+                                key={slot}
+                                style={{
+                                  ...slotBoxStyle,
+                                  backgroundColor:
+                                    selectedSlot === slot ? "#007BFF" : "#FFF",
+                                  color:
+                                    selectedSlot === slot ? "#FFF" : "#000",
+                                }}
+                                onClick={() => setSelectedSlot(slot)}>
+                                {moment(slot, "HH:mm").format("h:mm A")}
+                              </div>
+                            ))}
+                          </div>
+                          <div style={{ marginTop: "10px" }}>
+                            <button
+                              style={{
+                                marginRight: "10px",
+                                padding: "10px",
+                                background: "#007BFF",
+                                color: "white",
+                                border: "none",
+                              }}
+                              onClick={confirmBooking}>
+                              Confirm
+                            </button>
+                            <button
+                              style={{
+                                padding: "10px",
+                                background: "#DC3545",
+                                color: "white",
+                                border: "none",
+                              }}
+                              onClick={() => setPopupVisible(false)}>
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                     <div class="account-form-button">
                       <button type="submit" class="account-btn">
-                      Confirm Booking
+                        Confirm Booking
                       </button>
                     </div>
                   </form>
-                 
                 </div>
                 {/* <div class="course_details-price">
                   <del>$36.00</del>
@@ -830,32 +831,7 @@ const CourseDetails = () => {
           </div>
         </div>
       </section>
-      <div class="cta-area">
-        <div class="container">
-          <div class="cta-wrapper">
-            <div class="row align-items-center">
-              <div class="col-xl-6 col-lg-6">
-                <div class="cta-content mb-30 mb-lg-0">
-                  <span class="cta-subtitle">Download App</span>
-                  <h2 class="cta-title">
-                    Are you Ready to Start your Online Course?
-                  </h2>
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6">
-                <div class="cta-button">
-                  <a href="#" class="cta-btn">
-                    <i class="fa-brands fa-apple"></i>Apple Store
-                  </a>
-                  <a href="#" class="cta-btn">
-                    <i class="fa-brands fa-google-play"></i>Play Store
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <NewsLetter/>
       <Footer />
     </>
   );

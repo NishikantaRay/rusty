@@ -2,12 +2,13 @@ import React from "react";
 import CounterArea from "../components/counter/CounterArea";
 import EventArea from "../components/eventarea/EventArea";
 import Footer from "../components/footer/footer";
-import Navbar from "../components/nav/Navbar";
+import Navbar from "../components/nav/navBar";
 import TestimonialArea from "../components/testimonialSlider/testimonial";
 
 import TopCourse from "../components/topcourse/topcourse";
 import BrandSlider from "../components/brandslider/BrandSlider";
 import BlogSlider from "../components/blogslider/BlogSlider";
+import NewsLetter from "../components/newsletter/newsLetter";
 
 const Home = () => {
     return (
@@ -3794,32 +3795,7 @@ const Home = () => {
       <TopCourse />
       <BrandSlider />
       <BlogSlider />
-      <div class="cta-area">
-        <div class="container">
-          <div class="cta-wrapper">
-            <div class="row align-items-center">
-              <div class="col-xl-6 col-lg-6">
-                <div class="cta-content mb-30 mb-lg-0">
-                  <span class="cta-subtitle">Download App</span>
-                  <h2 class="cta-title">
-                    Are you Ready to Start your Online Course?
-                  </h2>
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6">
-                <div class="cta-button">
-                  <a href="#" class="cta-btn">
-                    <i class="fa-brands fa-apple"></i>Apple Store
-                  </a>
-                  <a href="#" class="cta-btn">
-                    <i class="fa-brands fa-google-play"></i>Play Store
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     <NewsLetter/>
       <Footer />
     </>
     )
