@@ -1,30 +1,7 @@
 import React from "react";
 import CounterItem from "./CounterItem";
-
+import counters from "../../data/counter.json";
 const CounterArea = () => {
-  const counters = [
-    {
-      iconClass: "fa-thin fa-globe",
-      dataCount: 34,
-      text: "Foreign Followers",
-    },
-    {
-      iconClass: "fa-thin fa-book-open",
-      dataCount: 12,
-      text: "Classes Complete",
-    },
-    {
-      iconClass: "fa-thin fa-user-group",
-      dataCount: 214,
-      text: "Students Enrolled",
-    },
-    {
-      iconClass: "fa-thin fa-medal",
-      dataCount: 56,
-      text: "Certified Teachers",
-    },
-  ];
-
   return (
     <div className="counter-area">
       <div className="container">

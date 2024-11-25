@@ -1,54 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
-
+import blogs from "../../data/blogs.json";
 const BlogSlider = () => {
-  const blogs = [
-    {
-      id: 1,
-      image: "assets/img/blog/8/1.jpg",
-      title: "Educational how to started learning Java Script.",
-      description:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      link: "blog-details.html",
-    },
-    {
-      id: 2,
-      image: "assets/img/blog/8/2.jpg",
-      title: "Machine Learning Night Fastaily Part 2 Influential",
-      description:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      link: "blog-details.html",
-    },
-    {
-      id: 3,
-      image: "assets/img/blog/8/3.jpg",
-      title: "Istanbul Teachings of Buddha and the Purpose",
-      description:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      link: "blog-details.html",
-    },
-    {
-      id: 2,
-      image: "assets/img/blog/8/2.jpg",
-      title: "Machine Learning Night Fastaily Part 2 Influential",
-      description:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      link: "blog-details.html",
-    },
-    {
-      id: 3,
-      image: "assets/img/blog/8/3.jpg",
-      title: "Istanbul Teachings of Buddha and the Purpose",
-      description:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      link: "blog-details.html",
-    },
-  ];
-
   return (
     <section className="h8_blog-area pt-110 pb-30">
       <div className="container">
@@ -114,8 +72,8 @@ const BlogSlider = () => {
           <Swiper
             modules={[Autoplay]}
             autoplay={{
-              delay: 3000, // Auto-slide delay in milliseconds
-              disableOnInteraction: false, // Prevent autoplay from stopping after interaction
+              delay: 3000,
+              disableOnInteraction: false,
             }}
             spaceBetween={20}
             slidesPerView={1}
@@ -135,18 +93,18 @@ const BlogSlider = () => {
               <SwiperSlide key={blog.id}>
                 <div className="h8_blog-item">
                   <div className="h8_blog-item-img w_img">
-                    <a href={blog.link}>
+                    <Link to={blog.link}>
                       <img src={blog.image} alt="" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="h8_blog-item-content">
                     <h4 className="h8_blog-item-content-title">
-                      <a href={blog.link}>{blog.title}</a>
+                      <Link to={blog.link}>{blog.title}</Link>
                     </h4>
                     <p>{blog.description}</p>
-                    <a href={blog.link} className="h8_blog-item-content-btn">
+                    <Link to={blog.link} className="h8_blog-item-content-btn">
                       Explore More <i className="fa-light fa-arrow-right"></i>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </SwiperSlide>

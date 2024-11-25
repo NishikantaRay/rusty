@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; 
 import menuLinks from "../../data/nav.json";
 
 const Navbar = () => {
@@ -16,17 +17,13 @@ const Navbar = () => {
             <div className="col-xl-10 col-lg-10 col-md-6 col-6">
               <div className="header-left">
                 <div className="header-logo">
-                  <a href="index.html">
-                    <img src="assets/img/logo/logo.png" alt="Logo" />
-                  </a>
+                  <Link to="/"><img src="assets/img/logo/logo.png" alt="Logo" /></Link> 
                 </div>
-                <nav
-                  className="main-menu mobile-menu d-none d-xl-block"
-                  id="mobile-menu">
+                <nav className="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                   <ul>
                     {menuLinks.mainMenu.map((item, index) => (
                       <li key={index}>
-                        <a href={item.url}>{item.label}</a>
+                        <Link to={item.url}>{item.label}</Link>
                       </li>
                     ))}
                   </ul>
@@ -36,9 +33,9 @@ const Navbar = () => {
             <div className="col-xl-2 col-lg-2 col-md-6 col-6">
               <div className="header-right">
                 <div className="header-btn d-none d-sm-block">
-                  <a href="#" className="header-btn theme-btn theme-btn-medium">
+                  <Link to="#" className="header-btn theme-btn theme-btn-medium">
                     Subscribe to Newsletter
-                  </a>
+                  </Link> 
                 </div>
                 <div className="header-menu-bar d-xl-none ml-10">
                   <span
@@ -65,7 +62,7 @@ const Navbar = () => {
           <ul>
             {menuLinks.sidebarMenu.map((item, index) => (
               <li key={index}>
-                <a href={item.url}>{item.label}</a>
+                <Link to={item.url}>{item.label}</Link> 
               </li>
             ))}
           </ul>

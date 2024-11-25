@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 import { FooterWidget } from "../../helper/index";
 import links from "../../data/footer.json";
+
 const Footer = () => {
   return (
     <footer className="footer-area h2_footer-area">
@@ -10,9 +12,9 @@ const Footer = () => {
             <div className="col-xl-3 col-lg-7 col-md-7 col-sm-12">
               <div className="footer-widget mb-40">
                 <div className="footer-logo">
-                  <a href="index.html">
+                  <Link to="/">
                     <img src="assets/img/logo/logo-white.png" alt="" />
-                  </a>
+                  </Link> 
                 </div>
                 <p className="footer-widget-text mb-35">
                   Through a combination of lectures, readings, discussions,
@@ -21,19 +23,19 @@ const Footer = () => {
                 <div className="footer-social">
                   <ul>
                     <li>
-                      <a href="#">
+                      <Link to="#">
                         <i className="fa-brands fa-twitter"></i>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">
+                      <Link to="#">
                         <i className="fa-brands fa-facebook-f"></i>
-                      </a>
+                      </Link> 
                     </li>
                     <li>
-                      <a href="#">
+                      <Link to="#">
                         <i className="fa-brands fa-linkedin-in"></i>
-                      </a>
+                      </Link> 
                     </li>
                   </ul>
                 </div>
@@ -57,7 +59,7 @@ const Footer = () => {
               <div className="footer-widget ml-80 mb-40">
                 <h5 className="footer-widget-title">Newsletter</h5>
                 <p className="footer-widget-text mb-20 newsletter-text">
-                  Sign up foe our newsletter and get 34% <br /> off your next
+                  Sign up for our newsletter and get 34% <br /> off your next
                   course.
                 </p>
                 <form action="#">

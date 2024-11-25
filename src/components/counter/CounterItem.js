@@ -16,7 +16,7 @@ const CounterItem = ({ iconClass, dataCount, text }) => {
             } else {
               clearInterval(interval);
             }
-          }, 50); // Adjust speed of counting
+          }, 50);
           observer.disconnect();
         }
       },

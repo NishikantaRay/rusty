@@ -4,53 +4,7 @@ import { Navigation, Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
-
-
-const testimonials = [
-  {
-    name: "Brian Cumin",
-    role: "Indigo Violet",
-    image: "assets/img/testimonial/1/admin-1.jpg",
-    review: "Lorem ipsum dolorArcu risus quis varius quam quisque id diam. mauris consectetur adipiscing elit, sed do eiusm commodo imperdiet",
-  },
-  {
-    name: "Penny Tool",
-    role: "Web Designer",
-    image: "assets/img/testimonial/1/admin-2.jpg",
-    review: "Nunc valuate nil urn, id fermentum sem portico non volitant leafed lorem, quiz poseur ipsum aliquot a. Morbi urn unique ac herderite volutpatorca.",
-  },
-  {
-    name: "Jake Weary",
-    role: "Manager",
-    image: "assets/img/testimonial/1/admin-3.jpg",
-    review: "Lorem ipsum dolorArcu risus quis varius quam quisque id diam. mauris consectetur adipiscing elit, sed do eiusm commodo imperdiet",
-  },
-  {
-    name: "Penny Tool",
-    role: "Web Designer",
-    image: "assets/img/testimonial/1/admin-2.jpg",
-    review: "Nunc valuate nil urn, id fermentum sem portico non volitant leafed lorem, quiz poseur ipsum aliquot a. Morbi urn unique ac herderite volutpatorca.",
-  },
-  {
-    name: "Jake Weary",
-    role: "Manager",
-    image: "assets/img/testimonial/1/admin-3.jpg",
-    review: "Lorem ipsum dolorArcu risus quis varius quam quisque id diam. mauris consectetur adipiscing elit, sed do eiusm commodo imperdiet",
-  },
-  {
-    name: "Penny Tool",
-    role: "Web Designer",
-    image: "assets/img/testimonial/1/admin-2.jpg",
-    review: "Nunc valuate nil urn, id fermentum sem portico non volitant leafed lorem, quiz poseur ipsum aliquot a. Morbi urn unique ac herderite volutpatorca.",
-  },
-  {
-    name: "Jake Weary",
-    role: "Manager",
-    image: "assets/img/testimonial/1/admin-3.jpg",
-    review: "Lorem ipsum dolorArcu risus quis varius quam quisque id diam. mauris consectetur adipiscing elit, sed do eiusm commodo imperdiet",
-  },
-  // Add more testimonials here...
-];
+import testimonials from "../../data/testimonial.json";
 
 const TestimonialArea = () => {
   return (
@@ -116,6 +70,7 @@ const TestimonialArea = () => {
                   <p>{testimonial.review}</p>
                 </div>
               </div>
+              <br /><br />
             </SwiperSlide>
           ))}
         </Swiper>

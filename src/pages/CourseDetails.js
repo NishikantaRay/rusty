@@ -122,70 +122,70 @@ const CourseDetails = () => {
     <>
       <Navbar />
 
-      <section class="course_details-area pt-120 pb-60">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6">
-              <div class="course_details-wrap mb-55">
-                <div class="course_details-top mb-60">
-                  <h3 class="course_details-title">
+      <section className="course_details-area pt-120 pb-60">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-6 col-lg-6">
+              <div className="course_details-wrap mb-55">
+                <div className="course_details-top mb-60">
+                  <h3 className="course_details-title">
                     Introduction to User Experience Design
                   </h3>
-                  <div class="course_details-meta">
-                    <div class="course_details-meta-left">
-                      <div class="course_details-author">
-                        <div class="course_details-author-img">
+                  <div className="course_details-meta">
+                    <div className="course_details-meta-left">
+                      <div className="course_details-author">
+                        <div className="course_details-author-img">
                           <img
                             src="assets/img/course/details/author.jpg"
                             alt=""
                           />
                         </div>
-                        <div class="course_details-author-info">
+                        <div className="course_details-author-info">
                           <span>Teacher</span>
                           <h5>
                             <a href="team.html">Dylan Meringue</a>
                           </h5>
                         </div>
                       </div>
-                      <div class="course_details-category">
+                      <div className="course_details-category">
                         <span>Categories</span>
                         <h5>
                           <a href="#">Online Teaching</a>
                         </h5>
                       </div>
-                      <div class="course_details-rating">
+                      <div className="course_details-rating">
                         <span>Review</span>
                         <ul>
                           <li>
-                            <i class="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
                           </li>
                           <li>
-                            <i class="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
                           </li>
                           <li>
-                            <i class="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
                           </li>
                           <li>
-                            <i class="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
                           </li>
                           <li>
-                            <i class="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
                           </li>
                         </ul>
                       </div>
                     </div>
-                    <div class="course_details-meta-right">
-                      <a href="#" class="theme-btn theme-btn-medium">
+                    <div className="course_details-meta-right">
+                      <a href="#" className="theme-btn theme-btn-medium">
                         Free
                       </a>
                     </div>
                   </div>
                 </div>
-                <div class="course_details-tab-button">
-                  <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                <div className="course_details-tab-button">
+                  <ul className="nav nav-pills" id="pills-tab" role="tablist">
+                    <li className="nav-item" role="presentation">
                       <button
-                        class="nav-link active"
+                        className="nav-link active"
                         id="pills-home-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-home"
@@ -193,13 +193,13 @@ const CourseDetails = () => {
                         role="tab"
                         aria-controls="pills-home"
                         aria-selected="true">
-                        <i class="fa-solid fa-bookmark"></i>
+                        <i className="fa-solid fa-bookmark"></i>
                         <span>Overview</span>
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li className="nav-item" role="presentation">
                       <button
-                        class="nav-link"
+                        className="nav-link"
                         id="pills-profile-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-profile"
@@ -207,13 +207,13 @@ const CourseDetails = () => {
                         role="tab"
                         aria-controls="pills-profile"
                         aria-selected="false">
-                        <i class="fa-thin fa-box"></i>
+                        <i className="fa-thin fa-box"></i>
                         <span>Curriculum</span>
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li className="nav-item" role="presentation">
                       <button
-                        class="nav-link"
+                        className="nav-link"
                         id="pills-contact-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-contact"
@@ -221,13 +221,13 @@ const CourseDetails = () => {
                         role="tab"
                         aria-controls="pills-contact"
                         aria-selected="false">
-                        <i class="fa-thin fa-user"></i>
+                        <i className="fa-thin fa-user"></i>
                         <span>Instructor</span>
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li className="nav-item" role="presentation">
                       <button
-                        class="nav-link"
+                        className="nav-link"
                         id="pills-four-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-four"
@@ -235,25 +235,25 @@ const CourseDetails = () => {
                         role="tab"
                         aria-controls="pills-four"
                         aria-selected="false">
-                        <i class="fa-thin fa-message-dots"></i>
+                        <i className="fa-thin fa-message-dots"></i>
                         <span>Reviews</span>
                       </button>
                     </li>
                   </ul>
                 </div>
-                <div class="course_details-tab-content">
-                  <div class="tab-content" id="pills-tabContent">
+                <div className="course_details-tab-content">
+                  <div className="tab-content" id="pills-tabContent">
                     <div
-                      class="tab-pane fade show active"
+                      className="tab-pane fade show active"
                       id="pills-home"
                       role="tabpanel"
                       aria-labelledby="pills-home-tab"
                       tabindex="0">
-                      <div class="course_details-content">
-                        <h4 class="course_details-content-title mb-15">
+                      <div className="course_details-content">
+                        <h4 className="course_details-content-title mb-15">
                           Courses Description
                         </h4>
-                        <p class="mb-25">
+                        <p className="mb-25">
                           Curabitur tempus tincidunt tellus ac placerat. Nullam
                           non libero nisi. Fusce congue est eget nisl tristique
                           ornare. Vestibulum id massa felis. Nullam vehicula
@@ -261,7 +261,7 @@ const CourseDetails = () => {
                           ut laoreet congue magna, a viverra turpis consectetur
                           porta.
                         </p>
-                        <p class="mb-40">
+                        <p className="mb-40">
                           Curabitur tempus tincidunt tellus ac placerat. Nullam
                           non libero nisi. Fusce congue est eget nisl tristique
                           ornare. Vestibulum id massa felis. Nullam vehicula
@@ -269,10 +269,10 @@ const CourseDetails = () => {
                           ut laoreet congue magna, a viverra turpis consectetur
                           porta.
                         </p>
-                        <h4 class="course_details-content-title mb-20">
+                        <h4 className="course_details-content-title mb-20">
                           What you will learn in this course
                         </h4>
-                        <div class="course_details-content-list">
+                        <div className="course_details-content-list">
                           <ul>
                             <li>
                               Etyma protium et olio gravida cur abitur est dui
@@ -291,16 +291,16 @@ const CourseDetails = () => {
                       </div>
                     </div>
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="pills-profile"
                       role="tabpanel"
                       aria-labelledby="pills-profile-tab"
                       tabindex="0">
-                      <div class="course_details-curriculum">
-                        <h4 class="course_details-content-title mb-15">
+                      <div className="course_details-curriculum">
+                        <h4 className="course_details-content-title mb-15">
                           Course Curriculum
                         </h4>
-                        <p class="mb-25">
+                        <p className="mb-25">
                           Curabitur tempus tincidunt tellus ac placerat. Nullam
                           non libero nisi. Fusce congue est eget nisl tristique
                           ornare. Vestibulum id massa felis. Nullam vehicula
@@ -308,11 +308,11 @@ const CourseDetails = () => {
                           ut laoreet congue magna, a viverra turpis consectetur
                           porta.
                         </p>
-                        <div class="accordion" id="Expp">
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
+                        <div className="accordion" id="Expp">
+                          <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingOne">
                               <button
-                                class="accordion-button"
+                                className="accordion-button"
                                 type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne"
@@ -323,39 +323,39 @@ const CourseDetails = () => {
                             </h2>
                             <div
                               id="collapseOne"
-                              class="accordion-collapse collapse show"
+                              className="accordion-collapse collapse show"
                               aria-labelledby="headingOne"
                               data-bs-parent="#Expp">
-                              <div class="accordion-body">
+                              <div className="accordion-body">
                                 <ul>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>
+                                      <i className="fa-brands fa-youtube"></i>
                                       Getting Started{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>WP
+                                      <i className="fa-brands fa-youtube"></i>WP
                                       Theme Development{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                 </ul>
                               </div>
                             </div>
                           </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
+                          <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingThree">
                               <button
-                                class="accordion-button collapsed"
+                                className="accordion-button collapsed"
                                 type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree"
@@ -366,39 +366,39 @@ const CourseDetails = () => {
                             </h2>
                             <div
                               id="collapseThree"
-                              class="accordion-collapse collapse"
+                              className="accordion-collapse collapse"
                               aria-labelledby="headingThree"
                               data-bs-parent="#Expp">
-                              <div class="accordion-body">
+                              <div className="accordion-body">
                                 <ul>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>
+                                      <i className="fa-brands fa-youtube"></i>
                                       Getting Started{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>WP
+                                      <i className="fa-brands fa-youtube"></i>WP
                                       Theme Development{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                 </ul>
                               </div>
                             </div>
                           </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
+                          <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingFour">
                               <button
-                                class="accordion-button collapsed"
+                                className="accordion-button collapsed"
                                 type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseFour"
@@ -409,39 +409,39 @@ const CourseDetails = () => {
                             </h2>
                             <div
                               id="collapseFour"
-                              class="accordion-collapse collapse"
+                              className="accordion-collapse collapse"
                               aria-labelledby="headingFour"
                               data-bs-parent="#Expp">
-                              <div class="accordion-body">
+                              <div className="accordion-body">
                                 <ul>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>
+                                      <i className="fa-brands fa-youtube"></i>
                                       Getting Started{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>WP
+                                      <i className="fa-brands fa-youtube"></i>WP
                                       Theme Development{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                 </ul>
                               </div>
                             </div>
                           </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFive">
+                          <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingFive">
                               <button
-                                class="accordion-button collapsed"
+                                className="accordion-button collapsed"
                                 type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseFive"
@@ -452,39 +452,39 @@ const CourseDetails = () => {
                             </h2>
                             <div
                               id="collapseFive"
-                              class="accordion-collapse collapse"
+                              className="accordion-collapse collapse"
                               aria-labelledby="headingFive"
                               data-bs-parent="#Expp">
-                              <div class="accordion-body">
+                              <div className="accordion-body">
                                 <ul>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>
+                                      <i className="fa-brands fa-youtube"></i>
                                       Getting Started{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>WP
+                                      <i className="fa-brands fa-youtube"></i>WP
                                       Theme Development{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                 </ul>
                               </div>
                             </div>
                           </div>
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingSix">
+                          <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingSix">
                               <button
-                                class="accordion-button collapsed"
+                                className="accordion-button collapsed"
                                 type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseSix"
@@ -495,29 +495,29 @@ const CourseDetails = () => {
                             </h2>
                             <div
                               id="collapseSix"
-                              class="accordion-collapse collapse"
+                              className="accordion-collapse collapse"
                               aria-labelledby="headingSix"
                               data-bs-parent="#Expp">
-                              <div class="accordion-body">
+                              <div className="accordion-body">
                                 <ul>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>
+                                      <i className="fa-brands fa-youtube"></i>
                                       Getting Started{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-brands fa-youtube"></i>WP
+                                      <i className="fa-brands fa-youtube"></i>WP
                                       Theme Development{" "}
                                     </a>
                                     <span>
                                       04:00
-                                      <i class="fa-light fa-lock-keyhole"></i>
+                                      <i className="fa-light fa-lock-keyhole"></i>
                                     </span>
                                   </li>
                                 </ul>
@@ -528,23 +528,23 @@ const CourseDetails = () => {
                       </div>
                     </div>
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="pills-contact"
                       role="tabpanel"
                       aria-labelledby="pills-contact-tab"
                       tabindex="0">
-                      <div class="course_details-instructor">
-                        <div class="course_details-thumbnail w_img">
+                      <div className="course_details-instructor">
+                        <div className="course_details-thumbnail w_img">
                           <img
                             src="assets/img/teacher/2/1.jpg"
                             alt="team images"
                           />
                         </div>
-                        <div class="course_details-author-content">
-                          <h6 class="course_details-author-title">
+                        <div className="course_details-author-content">
+                          <h6 className="course_details-author-title">
                             Jane Seymour
                           </h6>
-                          <span class="course_details-author-subtitle">
+                          <span className="course_details-author-subtitle">
                             Founder &amp; CEO
                           </span>
                           <p>
@@ -554,27 +554,27 @@ const CourseDetails = () => {
                             nisi ut aliquip ex ea commodo consequat. duis aute
                             irure dolor in reprehenderit in voluptate.
                           </p>
-                          <div class="contact-social">
+                          <div className="contact-social">
                             <span>Social Media</span>
                             <ul>
                               <li>
                                 <a href="#">
-                                  <i class="fa-brands fa-twitter"></i>
+                                  <i className="fa-brands fa-twitter"></i>
                                 </a>
                               </li>
                               <li>
                                 <a href="#">
-                                  <i class="fa-brands fa-facebook-f"></i>
+                                  <i className="fa-brands fa-facebook-f"></i>
                                 </a>
                               </li>
                               <li>
                                 <a href="#">
-                                  <i class="fa-brands fa-linkedin-in"></i>
+                                  <i className="fa-brands fa-linkedin-in"></i>
                                 </a>
                               </li>
                               <li>
                                 <a href="#">
-                                  <i class="fa-brands fa-behance"></i>
+                                  <i className="fa-brands fa-behance"></i>
                                 </a>
                               </li>
                             </ul>
@@ -583,87 +583,87 @@ const CourseDetails = () => {
                       </div>
                     </div>
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="pills-four"
                       role="tabpanel"
                       aria-labelledby="pills-four-tab"
                       tabindex="0">
-                      <div class="course_details-review">
-                        <h4 class="course_details-review-title">
+                      <div className="course_details-review">
+                        <h4 className="course_details-review-title">
                           Student Ratings &amp; Reviews
                         </h4>
-                        <div class="course_details-review-wrap">
-                          <div class="row d-flex align-items-center">
-                            <div class="col-md-4 col-sm-4">
-                              <div class="course_details-review-left">
+                        <div className="course_details-review-wrap">
+                          <div className="row d-flex align-items-center">
+                            <div className="col-md-4 col-sm-4">
+                              <div className="course_details-review-left">
                                 <h5>5.0</h5>
                                 <ul>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-solid fa-star"></i>
+                                      <i className="fa-solid fa-star"></i>
                                     </a>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-solid fa-star"></i>
+                                      <i className="fa-solid fa-star"></i>
                                     </a>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-solid fa-star"></i>
+                                      <i className="fa-solid fa-star"></i>
                                     </a>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-solid fa-star"></i>
+                                      <i className="fa-solid fa-star"></i>
                                     </a>
                                   </li>
                                   <li>
                                     <a href="#">
-                                      <i class="fa-solid fa-star"></i>
+                                      <i className="fa-solid fa-star"></i>
                                     </a>
                                   </li>
                                 </ul>
                                 <p>(4 Reviews)</p>
                               </div>
                             </div>
-                            <div class="col-md-8 col-sm-8">
-                              <div class="course_details-review-content">
+                            <div className="col-md-8 col-sm-8">
+                              <div className="course_details-review-content">
                                 <ul>
                                   <li>
-                                    <span class="review-rating">
-                                      5 <i class="fa-solid fa-star"></i>
+                                    <span className="review-rating">
+                                      5 <i className="fa-solid fa-star"></i>
                                     </span>
-                                    <span class="review-progress-bar"></span>
-                                    <span class="review-rating-count">1</span>
+                                    <span className="review-progress-bar"></span>
+                                    <span className="review-rating-count">1</span>
                                   </li>
                                   <li>
-                                    <span class="review-rating">
-                                      4 <i class="fa-solid fa-star"></i>
+                                    <span className="review-rating">
+                                      4 <i className="fa-solid fa-star"></i>
                                     </span>
-                                    <span class="review-progress-bar"></span>
-                                    <span class="review-rating-count">3</span>
+                                    <span className="review-progress-bar"></span>
+                                    <span className="review-rating-count">3</span>
                                   </li>
                                   <li>
-                                    <span class="review-rating">
-                                      5 <i class="fa-solid fa-star"></i>
+                                    <span className="review-rating">
+                                      5 <i className="fa-solid fa-star"></i>
                                     </span>
-                                    <span class="review-progress-bar"></span>
-                                    <span class="review-rating-count">0</span>
+                                    <span className="review-progress-bar"></span>
+                                    <span className="review-rating-count">0</span>
                                   </li>
                                   <li>
-                                    <span class="review-rating">
-                                      5 <i class="fa-solid fa-star"></i>
+                                    <span className="review-rating">
+                                      5 <i className="fa-solid fa-star"></i>
                                     </span>
-                                    <span class="review-progress-bar"></span>
-                                    <span class="review-rating-count">0</span>
+                                    <span className="review-progress-bar"></span>
+                                    <span className="review-rating-count">0</span>
                                   </li>
                                   <li>
-                                    <span class="review-rating">
-                                      5 <i class="fa-solid fa-star"></i>
+                                    <span className="review-rating">
+                                      5 <i className="fa-solid fa-star"></i>
                                     </span>
-                                    <span class="review-progress-bar"></span>
-                                    <span class="review-rating-count">0</span>
+                                    <span className="review-progress-bar"></span>
+                                    <span className="review-rating-count">0</span>
                                   </li>
                                 </ul>
                               </div>
@@ -676,25 +676,25 @@ const CourseDetails = () => {
                 </div>
               </div>
             </div>
-            <div class="col-xl-6 col-lg-6">
-              <div class="course_details-sidebar mb-60">
-                <div class="account-main">
-                  <h3 class="account-title">Sign in to Your Account 👋</h3>
-                  <form action="#" class="account-form">
-                    <div class="account-form-item mb-20">
-                      <div class="account-form-label">
+            <div className="col-xl-6 col-lg-6">
+              <div className="course_details-sidebar mb-60">
+                <div className="account-main">
+                  <h3 className="account-title">Sign in to Your Account 👋</h3>
+                  <form action="#" className="account-form">
+                    <div className="account-form-item mb-20">
+                      <div className="account-form-label">
                         <label>First Name</label>
                       </div>
-                      <div class="account-form-input">
+                      <div className="account-form-input">
                         <input type="text" placeholder="First Name" />
                       </div>
                     </div>
 
-                    <div class="account-form-item mb-20">
-                      <div class="account-form-label">
+                    <div className="account-form-item mb-20">
+                      <div className="account-form-label">
                         <label>Your Email</label>
                       </div>
-                      <div class="account-form-input">
+                      <div className="account-form-input">
                         <input type="email" placeholder="Enter Your Email" />
                       </div>
                     </div>
@@ -758,70 +758,70 @@ const CourseDetails = () => {
                         </div>
                       )}
                     </div>
-                    <div class="account-form-button">
-                      <button type="submit" class="account-btn">
+                    <div className="account-form-button">
+                      <button type="submit" className="account-btn">
                         Confirm Booking
                       </button>
                     </div>
                   </form>
                 </div>
-                {/* <div class="course_details-price">
+                {/* <div className="course_details-price">
                   <del>$36.00</del>
                   <h2>$28.00</h2>
                 </div>
-                <div class="course_details-list">
+                <div className="course_details-list">
                   <ul>
                     <li>
                       <span>
-                        <i class="fa-thin fa-clock"></i>Duration
+                        <i className="fa-thin fa-clock"></i>Duration
                       </span>
                       <span>15 Weeks</span>
                     </li>
                     <li>
                       <span>
-                        <i class="fa-thin fa-user-group"></i>Students
+                        <i className="fa-thin fa-user-group"></i>Students
                       </span>
                       <span>354</span>
                     </li>
                     <li>
                       <span>
-                        <i class="fa-thin fa-file-lines"></i>Lessons
+                        <i className="fa-thin fa-file-lines"></i>Lessons
                       </span>
                       <span>42</span>
                     </li>
                     <li>
                       <span>
-                        <i class="fa-thin fa-chart-line-up"></i>Skill Level
+                        <i className="fa-thin fa-chart-line-up"></i>Skill Level
                       </span>
                       <span>Beginner</span>
                     </li>
                     <li>
                       <span>
-                        <i class="fa-thin fa-language"></i>Language
+                        <i className="fa-thin fa-language"></i>Language
                       </span>
                       <span>English</span>
                     </li>
                     <li>
                       <span>
-                        <i class="fa-thin fa-user"></i>Instructor
+                        <i className="fa-thin fa-user"></i>Instructor
                       </span>
                       <span>Dylan Meringue</span>
                     </li>
                     <li>
                       <span>
-                        <i class="fa-thin fa-percent"></i>Pass Percentage
+                        <i className="fa-thin fa-percent"></i>Pass Percentage
                       </span>
                       <span>84%</span>
                     </li>
                     <li>
                       <span>
-                        <i class="fa-thin fa-calendar-days"></i>Deadline
+                        <i className="fa-thin fa-calendar-days"></i>Deadline
                       </span>
                       <span>24 March 2023</span>
                     </li>
                   </ul>
-                  <div class="course_details-sidebar-btn">
-                    <a href="#" class="course-btn theme-btn theme-btn-big">
+                  <div className="course_details-sidebar-btn">
+                    <a href="#" className="course-btn theme-btn theme-btn-big">
                       Purchase Now
                     </a>
                   </div>

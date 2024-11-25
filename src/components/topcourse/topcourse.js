@@ -1,48 +1,13 @@
 import React from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay  } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
+import blogPosts from "../../data/topCourse.json"; 
 
 const TopCourse = () => {
-  const blogPosts = [
-    {
-      title: "Four Ways to Keep Your Workout Routine Fresh",
-      date: "March 24, 2023",
-      category: "Blog",
-      description: "Maecenas Felis Tellus, dictum sed pharetra fermentum......",
-      link: "blog-details.html",
-    },
-    {
-      title: "The Complete Guide to Build RESTful API Application",
-      date: "March 24, 2023",
-      category: "Blog",
-      description: "Maecenas Felis Tellus, dictum sed pharetra fermentum......",
-      link: "blog-details.html",
-    },
-    {
-      title: "Only One Thing Impossible For God Find Sense in Any.",
-      date: "March 24, 2023",
-      category: "Blog",
-      description: "Maecenas Felis Tellus, dictum sed pharetra fermentum......",
-      link: "blog-details.html",
-    },{
-        title: "The Complete Guide to Build RESTful API Application",
-        date: "March 24, 2023",
-        category: "Blog",
-        description: "Maecenas Felis Tellus, dictum sed pharetra fermentum......",
-        link: "blog-details.html",
-      },
-      {
-        title: "Only One Thing Impossible For God Find Sense in Any.",
-        date: "March 24, 2023",
-        category: "Blog",
-        description: "Maecenas Felis Tellus, dictum sed pharetra fermentum......",
-        link: "blog-details.html",
-      },
-  ];
-
   return (
     <section className="h5_blog-area h6_blog-area pt-110 pb-90">
       <div className="container">
@@ -55,9 +20,9 @@ const TopCourse = () => {
           </div>
           <div className="col-md-3">
             <div className="h5_category-section-button mb-40 text-md-end">
-              <a href="#" className="theme-btn theme-btn-medium theme-btn-5">
+              <Link to="/blog" className="theme-btn theme-btn-medium theme-btn-5">
                 View All Blog
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -65,8 +30,8 @@ const TopCourse = () => {
           loop={true}
           modules={[Autoplay]}
           autoplay={{
-            delay: 3000, // Auto-slide delay in milliseconds
-            disableOnInteraction: false, // Prevent autoplay from stopping after interaction
+            delay: 3000,
+            disableOnInteraction: false,
           }}
           spaceBetween={20}
           slidesPerView={1}
@@ -87,16 +52,16 @@ const TopCourse = () => {
               <div className="h5_blog-item mb-30 active">
                 <div className="h5_blog-content">
                   <div className="h5_blog-content-meta">
-                    <a href="#" className="h5_blog-content-meta-tag">
+                    <Link to="#" className="h5_blog-content-meta-tag">
                       {post.category}
-                    </a>
+                    </Link>
                     <span>{post.date}</span>
                   </div>
                   <h5 className="h5_blog-content-title">
-                    <a href={post.link}>{post.title}</a>
+                    <Link to={post.link}>{post.title}</Link>
                   </h5>
                   <p>{post.description}</p>
-                  <a href="#" className="h5_blog-btn">
+                  <Link to={post.link} className="h5_blog-btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="auto"
@@ -113,7 +78,7 @@ const TopCourse = () => {
                         ></path>
                       </g>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>

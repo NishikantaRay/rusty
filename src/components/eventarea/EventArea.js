@@ -1,47 +1,11 @@
 import React from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay  } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
-
-const events = [
-  {
-    imgSrc: "assets/img/event/1/1.jpg",
-    location: "London, US",
-    time: "8.00 am - 6.00 pm",
-    title: "These are Designed to Provide Hands Training and Skill-Building.",
-    link: "event.html",
-  },
-  {
-    imgSrc: "assets/img/event/1/2.jpg",
-    location: "London, US",
-    time: "8.00 am - 6.00 pm",
-    title: "Personalized Learning & Meeting The Needs of Every Student.",
-    link: "event.html",
-  },
-  {
-    imgSrc: "assets/img/event/1/3.jpg",
-    location: "London, US",
-    time: "8.00 am - 6.00 pm",
-    title: "The Whole Child Fostering Social and Emotional Development.",
-    link: "event.html",
-  },
-  {
-    imgSrc: "assets/img/event/1/2.jpg",
-    location: "London, US",
-    time: "8.00 am - 6.00 pm",
-    title: "Personalized Learning & Meeting The Needs of Every Student.",
-    link: "event.html",
-  },
-  {
-    imgSrc: "assets/img/event/1/3.jpg",
-    location: "London, US",
-    time: "8.00 am - 6.00 pm",
-    title: "The Whole Child Fostering Social and Emotional Development.",
-    link: "event.html",
-  },
-];
+import { Link } from "react-router-dom";
+import events from "../../data/events.json";
 
 const EventArea = () => {
   return (
@@ -53,7 +17,9 @@ const EventArea = () => {
             <div className="col-xl-8 col-lg-8 col-md-8">
               <div className="event-section-area mb-20">
                 <div className="section-area">
-                  <span className="section-subtitle">Conference on Education</span>
+                  <span className="section-subtitle">
+                    Conference on Education
+                  </span>
                   <h2 className="section-title mb-0">Upcoming Events</h2>
                 </div>
               </div>
@@ -67,11 +33,11 @@ const EventArea = () => {
           </div>
           <div className="event-active swiper pb-80">
             <Swiper
-               modules={[Autoplay]}
-               autoplay={{
-                 delay: 3000, // Auto-slide delay in milliseconds
-                 disableOnInteraction: false, // Prevent autoplay from stopping after interaction
-               }}
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
               spaceBetween={20}
               slidesPerView={1}
               loop={true}
@@ -85,15 +51,14 @@ const EventArea = () => {
                 1024: {
                   slidesPerView: 3,
                 },
-              }}
-            >
+              }}>
               {events.map((event, index) => (
                 <SwiperSlide key={index}>
                   <div className="event-item">
                     <div className="event-img">
-                      <a href={event.link}>
+                      <Link to={event.link}>
                         <img src={event.imgSrc} alt="" />
-                      </a>
+                      </Link>
                     </div>
                     <div className="event-content">
                       <div className="event-content-meta">
@@ -107,11 +72,13 @@ const EventArea = () => {
                         </span>
                       </div>
                       <h5 className="event-content-title">
-                        <a href={event.link}>{event.title}</a>
+                        <Link to={event.link}>{event.title}</Link>
                       </h5>
-                      <a href="#" className="t-theme-btn theme-btn event-btn">
+                      <Link
+                        to={event.link}
+                        className="t-theme-btn theme-btn event-btn">
                         Get Ticket
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>

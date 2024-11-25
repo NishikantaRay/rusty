@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "image": "assets/img/blog/8/1.jpg",
+    "title": "Educational how to started learning Java Script.",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "link": "/blog-details/1"
+  },
+  {
+    "id": 2,
+    "image": "assets/img/blog/8/2.jpg",
+    "title": "Machine Learning Night Fastaily Part 2 Influential",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "link": "/blog-details/2"
+  },
+  {
+    "id": 3,
+    "image": "assets/img/blog/8/3.jpg",
+    "title": "Istanbul Teachings of Buddha and the Purpose",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "link": "/blog-details/3"
+  },
+  {
+    "id": 4,
+    "image": "assets/img/blog/8/2.jpg",
+    "title": "Machine Learning Night Fastaily Part 2 Influential",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "link": "/blog-details/4"
+  },
+  {
+    "id": 5,
+    "image": "assets/img/blog/8/3.jpg",
+    "title": "Istanbul Teachings of Buddha and the Purpose",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "link": "/blog-details/5"
+  }
+]
