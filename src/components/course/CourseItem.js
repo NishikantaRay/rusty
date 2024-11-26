@@ -18,7 +18,7 @@ const CourseItem = ({ course }) => {
             </div>
           </div>
           <h5 className="course-content-title">
-            <Link to={`/course/${course.id}`}>{course.title}</Link> {/* Link to specific course */}
+            <Link to={`/cart/add/${course.id}`}>{course.title}</Link> {/* Link to specific course */}
           </h5>
           <div className="course-content-bottom">
             <div className="course-bottom-info">
@@ -46,7 +46,7 @@ const CourseItem = ({ course }) => {
             </div>
           </div>
           <h5 className="course-hover-content-title">
-            <Link to={`/course/${course.id}`}>{course.title}</Link> {/* Link to specific course */}
+            <Link to={`/cart/add/${course.id}`}>{course.title}</Link> {/* Link to specific course */}
           </h5>
           <p className="course-hover-content-text">
             {course.description}

@@ -1,10 +1,12 @@
 import Footer from "../components/footer/footer";
 import Navbar from "../components/nav/navBar";
 import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import NewsLetter from "../components/newsletter/newsLetter";
+import coursesData from "../data/course_details.json";
 const localizer = momentLocalizer(moment);
 
 const eventsData = [
@@ -64,6 +66,12 @@ const slotBoxStyle = {
   userSelect: "none",
 };
 const CourseDetails = () => {
+  const { id } = useParams();
+  const course = coursesData.find((course) => course.id === id);
+  console.log(id, course);
+  //   if (!course) {
+  //     return <div>Course not found</div>;
+  //   }
   const [events, setEvents] = useState([]);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -121,64 +129,60 @@ const CourseDetails = () => {
   return (
     <>
       <Navbar />
-
-      <section className="course_details-area pt-120 pb-60">
+      <section className="course_details-area pt-60 pb-60">
         <div className="container">
           <div className="row">
             <div className="col-xl-6 col-lg-6">
               <div className="course_details-wrap mb-55">
                 <div className="course_details-top mb-60">
                   <h3 className="course_details-title">
-                    Introduction to User Experience Design
+                    {course.title}{" "}
+                    
                   </h3>
+                  <div className="course_details-meta-right">
+                      <Link className="theme-btn theme-btn-medium">
+                        Price: $ {course.price}
+                      </Link>
+                    </div>
                   <div className="course_details-meta">
-                    <div className="course_details-meta-left">
+                    {/* <div className="course_details-meta-left">
                       <div className="course_details-author">
                         <div className="course_details-author-img">
-                          <img
-                            src="assets/img/course/details/author.jpg"
-                            alt=""
-                          />
+                          <img src={course.auther_img} alt="" />
                         </div>
                         <div className="course_details-author-info">
                           <span>Teacher</span>
                           <h5>
-                            <a href="team.html">Dylan Meringue</a>
+                            <Link to="/">{course.auther_name}</Link>
                           </h5>
                         </div>
                       </div>
                       <div className="course_details-category">
                         <span>Categories</span>
                         <h5>
-                          <a href="#">Online Teaching</a>
+                          <Link to="/">{course.auther_role}</Link>
                         </h5>
                       </div>
                       <div className="course_details-rating">
                         <span>Review</span>
                         <ul>
-                          <li>
-                            <i className="fa-solid fa-star"></i>
-                          </li>
-                          <li>
-                            <i className="fa-solid fa-star"></i>
-                          </li>
-                          <li>
-                            <i className="fa-solid fa-star"></i>
-                          </li>
-                          <li>
-                            <i className="fa-solid fa-star"></i>
-                          </li>
-                          <li>
-                            <i className="fa-solid fa-star"></i>
-                          </li>
+                          {Array.from(
+                            { length: course.author_review },
+                            (_, index) => (
+                              <li>
+                                {" "}
+                                <i key={index} className="fa-solid fa-star"></i>
+                              </li>
+                            )
+                          )}
                         </ul>
                       </div>
                     </div>
                     <div className="course_details-meta-right">
-                      <a href="#" className="theme-btn theme-btn-medium">
-                        Free
-                      </a>
-                    </div>
+                      <Link className="theme-btn theme-btn-medium">
+                        {course.stat}
+                      </Link>
+                    </div> */}
                   </div>
                 </div>
                 <div className="course_details-tab-button">
@@ -253,39 +257,16 @@ const CourseDetails = () => {
                         <h4 className="course_details-content-title mb-15">
                           Courses Description
                         </h4>
-                        <p className="mb-25">
-                          Curabitur tempus tincidunt tellus ac placerat. Nullam
-                          non libero nisi. Fusce congue est eget nisl tristique
-                          ornare. Vestibulum id massa felis. Nullam vehicula
-                          bibendum nulla eu vulputate. Aenean fringilla tortor
-                          ut laoreet congue magna, a viverra turpis consectetur
-                          porta.
-                        </p>
-                        <p className="mb-40">
-                          Curabitur tempus tincidunt tellus ac placerat. Nullam
-                          non libero nisi. Fusce congue est eget nisl tristique
-                          ornare. Vestibulum id massa felis. Nullam vehicula
-                          bibendum nulla eu vulputate. Aenean fringilla tortor
-                          ut laoreet congue magna, a viverra turpis consectetur
-                          porta.
-                        </p>
+                        <p className="mb-25">{course.description1}</p>
+                        <p className="mb-40">{course.description2}</p>
                         <h4 className="course_details-content-title mb-20">
-                          What you will learn in this course
+                          {course.sub_header}
                         </h4>
                         <div className="course_details-content-list">
                           <ul>
-                            <li>
-                              Etyma protium et olio gravida cur abitur est dui
-                              viverrid non mi egret
-                            </li>
-                            <li>
-                              Dictum Bibendum sapiens internum malasada fames ac
-                              ante ipsum primes
-                            </li>
-                            <li>
-                              Fauci bus cur abitur pulvinar rut rum masa sed so
-                              dales sapiens utricles
-                            </li>
+                            {course.listData.map((item, index) => (
+                              <li key={index}>{item}</li>
+                            ))}
                           </ul>
                         </div>
                       </div>
@@ -536,7 +517,7 @@ const CourseDetails = () => {
                       <div className="course_details-instructor">
                         <div className="course_details-thumbnail w_img">
                           <img
-                            src="assets/img/teacher/2/1.jpg"
+                            src="/assets/img/teacher/2/1.jpg"
                             alt="team images"
                           />
                         </div>
@@ -635,35 +616,45 @@ const CourseDetails = () => {
                                       5 <i className="fa-solid fa-star"></i>
                                     </span>
                                     <span className="review-progress-bar"></span>
-                                    <span className="review-rating-count">1</span>
+                                    <span className="review-rating-count">
+                                      1
+                                    </span>
                                   </li>
                                   <li>
                                     <span className="review-rating">
                                       4 <i className="fa-solid fa-star"></i>
                                     </span>
                                     <span className="review-progress-bar"></span>
-                                    <span className="review-rating-count">3</span>
+                                    <span className="review-rating-count">
+                                      3
+                                    </span>
                                   </li>
                                   <li>
                                     <span className="review-rating">
                                       5 <i className="fa-solid fa-star"></i>
                                     </span>
                                     <span className="review-progress-bar"></span>
-                                    <span className="review-rating-count">0</span>
+                                    <span className="review-rating-count">
+                                      0
+                                    </span>
                                   </li>
                                   <li>
                                     <span className="review-rating">
                                       5 <i className="fa-solid fa-star"></i>
                                     </span>
                                     <span className="review-progress-bar"></span>
-                                    <span className="review-rating-count">0</span>
+                                    <span className="review-rating-count">
+                                      0
+                                    </span>
                                   </li>
                                   <li>
                                     <span className="review-rating">
                                       5 <i className="fa-solid fa-star"></i>
                                     </span>
                                     <span className="review-progress-bar"></span>
-                                    <span className="review-rating-count">0</span>
+                                    <span className="review-rating-count">
+                                      0
+                                    </span>
                                   </li>
                                 </ul>
                               </div>
@@ -679,26 +670,33 @@ const CourseDetails = () => {
             <div className="col-xl-6 col-lg-6">
               <div className="course_details-sidebar mb-60">
                 <div className="account-main">
-                  <h3 className="account-title">Sign in to Your Account 👋</h3>
+                  <h3 className="account-title">Lets Book 👋</h3>
                   <form action="#" className="account-form">
                     <div className="account-form-item mb-20">
                       <div className="account-form-label">
-                        <label>First Name</label>
+                        <label>Name</label>
                       </div>
                       <div className="account-form-input">
-                        <input type="text" placeholder="First Name" />
+                        <input type="text" placeholder="Enter Your Name" />
                       </div>
                     </div>
 
                     <div className="account-form-item mb-20">
                       <div className="account-form-label">
-                        <label>Your Email</label>
+                        <label>Email</label>
                       </div>
                       <div className="account-form-input">
                         <input type="email" placeholder="Enter Your Email" />
                       </div>
                     </div>
-
+                    <div className="account-form-item mb-20">
+                      <div className="account-form-label">
+                        <label>Phone</label>
+                      </div>
+                      <div className="account-form-input">
+                        <input type="phone" placeholder="Enter Your Phone" />
+                      </div>
+                    </div>
                     <div>
                       <Calendar
                         localizer={localizer}
@@ -758,6 +756,7 @@ const CourseDetails = () => {
                         </div>
                       )}
                     </div>
+                    <br />
                     <div className="account-form-button">
                       <button type="submit" className="account-btn">
                         Confirm Booking
@@ -765,73 +764,12 @@ const CourseDetails = () => {
                     </div>
                   </form>
                 </div>
-                {/* <div className="course_details-price">
-                  <del>$36.00</del>
-                  <h2>$28.00</h2>
-                </div>
-                <div className="course_details-list">
-                  <ul>
-                    <li>
-                      <span>
-                        <i className="fa-thin fa-clock"></i>Duration
-                      </span>
-                      <span>15 Weeks</span>
-                    </li>
-                    <li>
-                      <span>
-                        <i className="fa-thin fa-user-group"></i>Students
-                      </span>
-                      <span>354</span>
-                    </li>
-                    <li>
-                      <span>
-                        <i className="fa-thin fa-file-lines"></i>Lessons
-                      </span>
-                      <span>42</span>
-                    </li>
-                    <li>
-                      <span>
-                        <i className="fa-thin fa-chart-line-up"></i>Skill Level
-                      </span>
-                      <span>Beginner</span>
-                    </li>
-                    <li>
-                      <span>
-                        <i className="fa-thin fa-language"></i>Language
-                      </span>
-                      <span>English</span>
-                    </li>
-                    <li>
-                      <span>
-                        <i className="fa-thin fa-user"></i>Instructor
-                      </span>
-                      <span>Dylan Meringue</span>
-                    </li>
-                    <li>
-                      <span>
-                        <i className="fa-thin fa-percent"></i>Pass Percentage
-                      </span>
-                      <span>84%</span>
-                    </li>
-                    <li>
-                      <span>
-                        <i className="fa-thin fa-calendar-days"></i>Deadline
-                      </span>
-                      <span>24 March 2023</span>
-                    </li>
-                  </ul>
-                  <div className="course_details-sidebar-btn">
-                    <a href="#" className="course-btn theme-btn theme-btn-big">
-                      Purchase Now
-                    </a>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
         </div>
       </section>
-      <NewsLetter/>
+      <NewsLetter />
       <Footer />
     </>
   );

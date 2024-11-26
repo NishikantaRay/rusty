@@ -17,18 +17,19 @@ const App = () => {
         <Routes>
           {routes.map((route, index) => {
             const Component = componentsMap[route.element] || (() => null);
+            console.log(Component);
             console.log(route);
             return (
               <Route
-                key={index}
+                key={route.path}
                 path={route.path}
                 element={
                   route.requiresAuth ? (
                     <PrivateRoute>
-                      <Component />
+                      <Component key={route.path} />
                     </PrivateRoute>
                   ) : (
-                    <Component />
+                    <Component key={route.path}/>
                   )
                 }
               />

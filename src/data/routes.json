@@ -1,6 +1,6 @@
 [
   {
-    "path": "/details",
+    "path": "/cart/add/:id",
     "element": "CourseDetails",
     "title": "Course Details",
     "requiresAuth": false

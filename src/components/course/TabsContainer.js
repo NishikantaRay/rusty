@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import TabPane from './TabPane'; // Import the TabPane component
+import TabPane from './TabPane';
 
 const TabsContainer = () => {
-  const [activeTab, setActiveTab] = useState('pills-home'); // State to manage active tab
+  const [activeTab, setActiveTab] = useState('pills-home'); 
 
   const tabs = [
     { id: 'pills-home', label: 'Home' },

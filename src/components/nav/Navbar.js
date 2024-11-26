@@ -17,7 +17,7 @@ const Navbar = () => {
             <div className="col-xl-10 col-lg-10 col-md-6 col-6">
               <div className="header-left">
                 <div className="header-logo">
-                  <Link to="/"><img src="assets/img/logo/logo.png" alt="Logo" /></Link> 
+                  <Link to="/"><img src="/assets/img/logo/logo.png" alt="Logo" /></Link> 
                 </div>
                 <nav className="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                   <ul>

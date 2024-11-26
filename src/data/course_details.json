@@ -1,0 +1,15 @@
+[
+  {
+    "id": "00001",
+    "title": "Introduction to User Experience Design",
+    "price": 19.99,
+    "description1": " Curabitur tempus tincidunt tellus ac placerat. Nullam non libero nisi. Fusce congue est eget nisl tristiqu ornare. Vestibulum id massa felis. Nullam vehicula bibendum nulla eu vulputate. Aenean fringilla tortor ut laoreet congue magna, a viverra turpis consectetur porta.",
+    "description2": " Curabitur tempus tincidunt tellus ac placerat. Nullam non libero nisi. Fusce congue est eget nisl tristiqu ornare. Vestibulum id massa felis. Nullam vehicula bibendum nulla eu vulputate. Aenean fringilla tortor ut laoreet congue magna, a viverra turpis consectetur porta.",
+    "sub_header" :"What you will learn in this course",
+    "listData":[
+        "Etyma protium et olio gravida cur abitur est dui viverrid non mi egret",
+        "Dictum Bibendum sapiens internum malasada fames ac ante ipsum primes",
+        "Fauci bus cur abitur pulvinar rut rum masa sed so dales sapiens utricles"
+      ]
+    }
+]
