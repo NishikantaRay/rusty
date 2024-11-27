@@ -20239,12 +20239,16 @@ input:focus::placeholder, textarea:focus::placeholder {
 }
 
 
+
 .rbc-today {
   background-color: #e86602;
   font-weight: bold;
   border: none; 
 }
-
+.disabled-slot {
+  opacity: 0.5;
+  pointer-events: none; /* Disable interaction */
+}
 
 .rbc-month-view,
 .rbc-month-row,

@@ -3,6 +3,7 @@ import Navbar from "../components/nav/navBar";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Calendar, momentLocalizer } from "react-big-calendar";
+import axios from "axios";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import NewsLetter from "../components/newsletter/newsLetter";
@@ -10,18 +11,18 @@ import coursesData from "../data/course_details.json";
 const localizer = momentLocalizer(moment);
 
 const eventsData = [
-  {
-    id: 1,
-    title: "Initial Consulting",
-    start: "2024-11-25T10:00:00",
-    end: "2024-11-25T11:00:00",
-  },
-  {
-    id: 2,
-    title: "Follow-Up Session",
-    start: "2024-11-26T14:00:00",
-    end: "2024-11-26T15:00:00",
-  },
+  // {
+  //   id: 1,
+  //   title: "Initial Consulting",
+  //   start: "2024-11-25T10:00:00",
+  //   end: "2024-11-25T11:00:00",
+  // },
+  // {
+  //   id: 2,
+  //   title: "Follow-Up Session",
+  //   start: "2024-11-26T14:00:00",
+  //   end: "2024-11-26T15:00:00",
+  // },
 ];
 
 const generateTimeSlots = (start, end) => {
@@ -65,12 +66,14 @@ const slotBoxStyle = {
   cursor: "pointer",
   userSelect: "none",
 };
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const CourseDetails = () => {
   const { id } = useParams();
   const course = coursesData.find((course) => course.id === id);
-    // if (!course) {
-    //   return <div>Course not found</div>;
-    // }
+  // if (!course) {
+  //   return <div>Course not found</div>;
+  // }
   const [events, setEvents] = useState([]);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -78,7 +81,9 @@ const CourseDetails = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const timeSlots = generateTimeSlots("09:00", "17:00"); // 9:00 AM to 5:00 PM
+  const [courseId, setCourseId] = useState("course_id_example"); 
+  const [price, setPrice] = useState(1000);
+  const timeSlots = generateTimeSlots("09:00", "17:00");
 
   useEffect(() => {
     const formattedEvents = eventsData.map((event) => ({
@@ -90,11 +95,116 @@ const CourseDetails = () => {
   }, []);
 
   const handleDateSelection = (slotInfo) => {
+    const currentTime = moment();
+
+  // Allow the selection of today's date, but ensure the time is after the current moment
+  const selectedTime = moment(slotInfo.start);
+  
+  if (selectedTime.isBefore(currentTime, 'day')) {
+    alert("Please select a time in the future.");
+    return;
+  }
     setSelectedDate(slotInfo.start);
     setPopupVisible(true);
   };
+  const createOrder = async (amount) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/slots/order`, {
+        amount: amount,
+      });
+      if (response && response.data && response.data.order_id) {
+        const options = {
+          key: process.env.REACT_APP_RAZORPAY_KEY_ID,
+          amount: amount * 100,
+          currency: "INR",
+          name: "Your Company Name",
+          description: "Payment for Order",
+          order_id: response.data.order_id,
+          handler: async function (paymentResponse) {
+            console.log("Payment Success:", paymentResponse);
+            try {
+              const res = await axios.post(`${BASE_URL}/slots/verify-capture`, {
+                razorpay_order_id: paymentResponse.razorpay_order_id,
+                razorpay_payment_id: paymentResponse.razorpay_payment_id,
+                razorpay_signature: paymentResponse.razorpay_signature,
+              });
 
-  const handleSubmit = (e) => {
+              if (res.status === 200) {
+                console.log("Payment Verified and Slot Booked");
+              }
+            } catch (error) {
+              console.error("Error verifying payment:", error);
+            }
+          },
+          prefill: {
+            name: "Customer Name",
+            email: "customer@example.com",
+            phone_number: "1234567890",
+          },
+          theme: {
+            color: "#F37254",
+          },
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+
+        return {
+          order_id: response.data.order_id,
+          amount: amount,
+          currency: "INR",
+        };
+      } else {
+        console.error("Order creation failed: No order ID returned");
+        return null;
+      }
+    } catch (error) {
+      console.error(
+        "Error creating order:",
+        error.response?.data || error.message
+      );
+      return null;
+    }
+  };
+  const calendarStyle = (date) => {
+    const today = new Date();
+    today.setDate(today.getDate() - 1); // Subtract 1 day to allow the current date and disable the day before
+    
+    // Compare the date with today minus 1 day
+    if (date < today) {
+      return {
+        style: {
+          backgroundColor: '#D3D3D3', // Light grey background for past dates
+          cursor: 'not-allowed', // Change cursor to indicate it's disabled
+          pointerEvents: 'none', // Disable interaction with past dates
+          color: '#A9A9A9', // Grey out the text of the date
+          border: '1px solid #A9A9A9', // Optional border to make it look more disabled
+          margin: 0,
+          padding: 0,
+        },
+      };
+    }
+  
+    return {};
+  };
+  
+ 
+  const bookSlot = async (slotData) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/slots/book`, slotData);
+
+      if (response.status === 200) {
+        return response.data;
+      }
+    } catch (error) {
+      console.error(
+        "Error booking slot:",
+        error.response?.data || error.message
+      );
+      return null;
+    }
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !phone) {
@@ -120,39 +230,40 @@ const CourseDetails = () => {
       alert("This slot overlaps with an existing booking!");
       return;
     }
+    const orderData = await createOrder(price);
+    if (!orderData) return;
 
+    const { order_id, amount, currency } = orderData;
     const newEvent = {
       id: events.length + 1,
       title: `Booking by ${name}`,
       start: startDateTime,
       end: endDateTime,
     };
-
-    
     setEvents([...events, newEvent]);
     setPopupVisible(false);
     setSelectedSlot(null);
-
     const formData = {
       name,
       email,
       phone,
-      selectedDate: moment(selectedDate).format("MMMM Do YYYY"),
-      selectedSlot: moment(selectedSlot, "HH:mm").format("h:mm A"),
-      startDateTime: startDateTime.toISOString(), // Use ISO format for date-time
-      endDateTime: endDateTime.toISOString(), // Use ISO format for date-time
+      courseId: course.id,
+      price,
+      paymentId: order_id,
+      platform: "goggle",
+      dateTime: startDateTime.toISOString(),
+      start_date: startDateTime.toISOString(),
+      end_date: endDateTime.toISOString(),
     };
-
-    console.log("Booking confirmed!", formData, newEvent);
-    // after submit clear the form
-    // setName("");
-    // setEmail("");
-    // setPhone("");
-    // setSelectedDate(null);
-    // setSelectedSlot(null);
-
+    const response = await bookSlot(formData);
+    if (!response) {
+      alert("Error booking slot. Please try again later.");
+      return;
+    }
     alert("Slot booked successfully!");
   };
+ 
+
   return (
     <>
       <Navbar />
@@ -205,7 +316,7 @@ const CourseDetails = () => {
                             Courses Description
                           </h4>
                           <p className="mb-25">{course.description1}</p>
-                          <p className="mb-40">{course.description2}</p>
+                          <p className="mb-40"  >{course.description2}</p>
                           <h4 className="course_details-content-title mb-20">
                             {course.sub_header}
                           </h4>
@@ -278,6 +389,8 @@ const CourseDetails = () => {
                           defaultDate={new Date()}
                           style={{ height: 400 }}
                           className="calendar-container"
+                          dayPropGetter={calendarStyle}
+                          
                         />
 
                         {popupVisible && (
@@ -315,6 +428,7 @@ const CourseDetails = () => {
                                   color: "white",
                                   border: "none",
                                   width: "200px",
+                                  borderRadius: "5px",
                                 }}
                                 onClick={() => setPopupVisible(false)}>
                                 Confirm
@@ -326,6 +440,7 @@ const CourseDetails = () => {
                                   color: "white",
                                   border: "none",
                                   width: "200px",
+                                  borderRadius: "5px",
                                 }}
                                 onClick={() => setPopupVisible(false)}>
                                 Cancel
