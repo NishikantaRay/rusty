@@ -20122,4 +20122,137 @@ input:focus::placeholder, textarea:focus::placeholder {
   background-color: var(--clr-theme-primary-10);
 }
 
-/*# sourceMappingURL=main.css.map */
+
+.calendar-container {
+  margin: 20px auto;
+}
+
+.rbc-off-range {
+  background-color: #f0f0f0; 
+  color: #a0a0a0;
+  pointer-events: none; 
+  opacity: 0.6; 
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column; 
+}
+
+.rbc-toolbar {
+  order: 1; 
+  background-color: #e86602; 
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 10px;
+ 
+  text-align: center;
+}
+
+.rbc-toolbar button {
+  background-color: #e86602;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.rbc-toolbar button:hover {
+  background-color: #d75400;
+}
+
+
+.rbc-month-view {
+  order: 0; 
+}
+
+.rbc-today {
+  background-color: #ffcc80; 
+  font-weight: bold;
+  color: #000; 
+}
+
+.rbc-day-bg:not(.rbc-off-range):hover {
+  background-color: #ffe0b2;
+  cursor: pointer;
+}
+
+.rbc-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+
+}
+.rbc-btn-group {
+  background-color: #fff;
+}
+.rbc-toolbar button {
+  background-color: #e86602;
+  color: white;
+  border: none; 
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.rbc-toolbar button:hover {
+  background-color: #e86602;
+}
+
+
+.rbc-header {
+  background-color: #e86602;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+}
+
+.rbc-day-bg {
+  background-color: #fff;
+  transition: background-color 0.3s;
+  border: none;
+}
+
+.rbc-day-bg:hover {
+  background-color: #e86602;
+}
+
+
+.rbc-event {
+  background-color: #e86602;
+  color: white;
+  padding: 5px;
+  font-size: 0.9em;
+  border: none;
+}
+
+.rbc-event:hover {
+  background-color: #e86602;
+}
+
+
+.rbc-selected-cell {
+  background-color: #e86602 !important;
+  border: none; 
+}
+
+
+.rbc-today {
+  background-color: #e86602;
+  font-weight: bold;
+  border: none; 
+}
+
+
+.rbc-month-view,
+.rbc-month-row,
+.rbc-row,
+.rbc-row-content,
+.rbc-day-slot,
+.rbc-time-view {
+  border: none !important; 
+}
+
+
