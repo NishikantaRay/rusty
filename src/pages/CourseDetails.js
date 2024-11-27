@@ -68,15 +68,16 @@ const slotBoxStyle = {
 const CourseDetails = () => {
   const { id } = useParams();
   const course = coursesData.find((course) => course.id === id);
-  console.log(id, course);
-  //   if (!course) {
-  //     return <div>Course not found</div>;
-  //   }
+    // if (!course) {
+    //   return <div>Course not found</div>;
+    // }
   const [events, setEvents] = useState([]);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const timeSlots = generateTimeSlots("09:00", "17:00"); // 9:00 AM to 5:00 PM
 
   useEffect(() => {
@@ -93,7 +94,14 @@ const CourseDetails = () => {
     setPopupVisible(true);
   };
 
-  const confirmBooking = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!name || !email || !phone) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
     if (!selectedSlot) {
       alert("Please select a time slot.");
       return;
@@ -115,15 +123,34 @@ const CourseDetails = () => {
 
     const newEvent = {
       id: events.length + 1,
-      title: "New Booking",
+      title: `Booking by ${name}`,
       start: startDateTime,
       end: endDateTime,
     };
 
+    
     setEvents([...events, newEvent]);
     setPopupVisible(false);
     setSelectedSlot(null);
-    console.log("Slot booked successfully!", newEvent);
+
+    const formData = {
+      name,
+      email,
+      phone,
+      selectedDate: moment(selectedDate).format("MMMM Do YYYY"),
+      selectedSlot: moment(selectedSlot, "HH:mm").format("h:mm A"),
+      startDateTime: startDateTime.toISOString(), // Use ISO format for date-time
+      endDateTime: endDateTime.toISOString(), // Use ISO format for date-time
+    };
+
+    console.log("Booking confirmed!", formData, newEvent);
+    // after submit clear the form
+    // setName("");
+    // setEmail("");
+    // setPhone("");
+    // setSelectedDate(null);
+    // setSelectedSlot(null);
+
     alert("Slot booked successfully!");
   };
   return (
@@ -198,13 +225,18 @@ const CourseDetails = () => {
               <div className="col-xl-6 col-lg-6">
                 <div className="">
                   <div className="account-main">
-                    <form className="account-form">
+                    <form className="account-form" onSubmit={handleSubmit}>
                       <div className="account-form-item mb-20">
                         <div className="account-form-label">
                           <label>Name</label>
                         </div>
                         <div className="account-form-input">
-                          <input type="text" placeholder="Enter Your Name" />
+                          <input
+                            type="text"
+                            placeholder="Enter Your Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                          />
                         </div>
                       </div>
 
@@ -213,15 +245,26 @@ const CourseDetails = () => {
                           <label>Email</label>
                         </div>
                         <div className="account-form-input">
-                          <input type="email" placeholder="Enter Your Email" />
+                          <input
+                            type="email"
+                            placeholder="Enter Your Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
                         </div>
                       </div>
+
                       <div className="account-form-item mb-20">
                         <div className="account-form-label">
                           <label>Phone</label>
                         </div>
                         <div className="account-form-input">
-                          <input type="phone" placeholder="Enter Your Phone" />
+                          <input
+                            type="tel"
+                            placeholder="Enter Your Phone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                          />
                         </div>
                       </div>
                       <div>
@@ -236,6 +279,7 @@ const CourseDetails = () => {
                           style={{ height: 400 }}
                           className="calendar-container"
                         />
+
                         {popupVisible && (
                           <div style={popupStyles}>
                             <p>
@@ -272,7 +316,7 @@ const CourseDetails = () => {
                                   border: "none",
                                   width: "200px",
                                 }}
-                                onClick={confirmBooking}>
+                                onClick={() => setPopupVisible(false)}>
                                 Confirm
                               </button>
                               <button
@@ -292,7 +336,12 @@ const CourseDetails = () => {
                       </div>
                       <br />
                       <div className="account-form-button">
-                        <button type="submit" className="account-btn">
+                        <button
+                          type="submit"
+                          className="account-btn"
+                          onClick={(e) => {
+                            handleSubmit(e);
+                          }}>
                           Confirm Booking
                         </button>
                       </div>
